@@ -1,14 +1,23 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
+
+func toAlternatingCase(str string) string {
+	result := ""
+	for _, char := range str {
+		if char >= 'a' && char <= 'z' {
+			result += string(char - 32) // Преобразование строчной буквы в заглавную
+		} else if char >= 'A' && char <= 'Z' {
+			result += string(char + 32) // Преобразование прописной буквы в строчную
+		} else {
+			result += string(char) // Оставляем символ без изменений
+		}
+	}
+	return result
+}
 
 func main() {
-	n := 0
-	PointOne(&n)
-	fmt.Println(n)
-}
-func PointOne(n *int) {
-
+	input := "altERnaTIng cAsE"
+	output := toAlternatingCase(input)
+	fmt.Println(output) // Вывод: ALTerNAtiNG CaSe
 }
